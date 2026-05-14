@@ -1,5 +1,5 @@
 /* ============================================================
-   Attar Al-Arabia — 3D Viewer & Button Styles
+   Attar Al-Arabia - 3D Viewer & Button Styles
    Web 3D Applications (H7006) | University of Sussex 2026
    ============================================================ */
 
@@ -9,7 +9,7 @@ body.viewer-body {
   overflow-x: hidden;
 }
 
-/* Three.js canvas container — fills available space */
+/* Three.js canvas container - fills available space */
 #threeContainer {
   width: 100%;
   height: 70vh;
@@ -66,7 +66,7 @@ body.viewer-body {
   white-space: nowrap;
 }
 
-/* Gold action button — primary interactions */
+/* Gold action button - primary interactions */
 .btn-3d-gold {
   border-color: #D4AF37;
   color: #D4AF37;
@@ -92,7 +92,7 @@ body.viewer-body {
   background: rgba(212,175,55,0.12);
 }
 
-/* Wireframe toggle — distinct style so it's easy to find */
+/* Wireframe toggle - distinct style so it's easy to find */
 .btn-3d-wire {
   border-color: #60a0ff;
   color: #60a0ff;

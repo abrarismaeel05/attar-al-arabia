@@ -1,5 +1,5 @@
 /* ============================================================
-   Attar Al-Arabia — Main Stylesheet
+   Attar Al-Arabia - Main Stylesheet
    Web 3D Applications (H7006) | University of Sussex 2026
    Student: Candidate 278908
    ============================================================ */
@@ -48,7 +48,7 @@ body {
   padding: 0.5rem 1.5rem;
 }
 
-/* CSS Logo — designed entirely in CSS as required by the brief */
+/* CSS Logo - designed entirely in CSS as required by the brief */
 .logo .navbar-brand {
   text-decoration: none;
   display: flex;

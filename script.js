@@ -105,7 +105,7 @@ window.toggleAudio = function() {
 
 const loader = new GLTFLoader();
 
-/** Hides the loading overlay once — called when the first model finishes loading. */
+/** Hides the loading overlay once, called when the first model finishes loading. */
 let overlayHidden = false;
 function hideOverlay() {
   if (overlayHidden) return;

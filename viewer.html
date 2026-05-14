@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--
+  Attar Al-Arabia - 3D Viewer (viewer.html)
+  H7006 Web 3D Applications
+  University of Sussex 2026
+  Candidate: 278908
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>3D Gallery | Attar Al-Arabia</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_button.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three":         "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+
+<body class="viewer-body">
+
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar sticky-top navbar-expand-sm">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="navbar-brand" href="index.html">
+          <h1>&#1593;&#1591;&#1585;</h1>
+          <h2>Al-Arabia</h2>
+          <p>The Art of Arabian Fragrance</p>
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="viewer.html">3D Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Fragrances</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="viewer.html?model=oud">Oud Noir</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=rose">Rose Royale</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=amber">Amber Essence</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Three.js canvas container -->
+  <div id="threeContainer" style="position: relative;">
+
+    <div id="loading-overlay">
+      <div class="loader-ring"></div>
+      <p class="loader-text">Loading Scene...</p>
+    </div>
+
+    <div id="gui-container"></div>
+
+    <div id="viewer-hint">
+      <i class="fas fa-mouse me-1"></i> Drag to rotate &nbsp;|&nbsp;
+      <i class="fas fa-search me-1"></i> Scroll to zoom
+    </div>
+
+  </div>
+
+  <!-- Control panel -->
+  <div id="control-panel">
+    <div class="container-fluid">
+
+      <!-- Model selection -->
+      <div class="row mb-2">
+        <div class="col text-center">
+          <small class="text-muted d-block mb-2"
+                 style="letter-spacing:0.15em; font-size:0.65rem; text-transform:uppercase;">
+            Select Fragrance
+          </small>
+          <div class="model-tabs">
+            <button id="btn-model-oud" class="btn-3d btn-3d-model selected"
+                    onclick="selectModel('oud')">
+              <i class="fas fa-circle-dot me-1"></i> Oud Noir
+            </button>
+            <button id="btn-model-rose" class="btn-3d btn-3d-model"
+                    onclick="selectModel('rose')">
+              <i class="fas fa-circle-dot me-1"></i> Rose Royale
+            </button>
+            <button id="btn-model-amber" class="btn-3d btn-3d-model"
+                    onclick="selectModel('amber')">
+              <i class="fas fa-circle-dot me-1"></i> Amber Essence
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="row">
+        <div class="col">
+          <div class="action-buttons">
+
+            <!-- Animate button - triggers onClick animation -->
+            <button id="btn-animate" class="btn-3d btn-3d-gold"
+                    onclick="triggerAnimation()">
+              <i class="fas fa-play me-1"></i> Animate
+            </button>
+
+            <!-- Wireframe toggle - required by brief -->
+            <button id="btn-wire" class="btn-3d btn-3d-wire"
+                    onclick="toggleWireframe()">
+              <i class="fas fa-border-all me-1"></i> Wireframe
+            </button>
+
+            <!-- Auto rotate toggle -->
+            <button id="btn-rotate" class="btn-3d btn-3d-rotate active-btn"
+                    onclick="toggleAutoRotate()">
+              <i class="fas fa-sync-alt me-1"></i> Rotate
+            </button>
+
+            <!-- Ambient sound toggle using Web Audio API -->
+            <button id="btn-audio" class="btn-3d btn-3d-audio"
+                    onclick="toggleAudio()">
+              <i class="fas fa-volume-mute me-1" id="audio-icon"></i> Sound
+            </button>
+
+            <!-- Reset camera -->
+            <button class="btn-3d btn-3d-gold" onclick="resetCamera()">
+              <i class="fas fa-compress-arrows-alt me-1"></i> Reset
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Model info and controls reference -->
+  <div class="container my-4">
+    <div class="row g-4 align-items-start">
+
+      <div class="col-md-7">
+        <div id="model-info">
+          <h3 id="info-name">Oud Noir</h3>
+          <p class="model-subtitle" id="info-subtitle">Ancient Wood &bull; Black Amber &bull; Incense</p>
+          <p id="info-desc">
+            The rarest aromatic material in the Arab world. Oud Noir captures the deep,
+            resinous character of aged agarwood, mixed with black amber and incense smoke.
+            A fragrance that has been worn across the Middle East for centuries.
+          </p>
+          <div class="scent-notes" id="info-notes">
+            <span class="scent-note">Oud</span>
+            <span class="scent-note">Black Amber</span>
+            <span class="scent-note">Incense</span>
+            <span class="scent-note">Sandalwood</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div id="model-info">
+          <h3 style="font-size:1rem;">Controls</h3>
+          <table class="w-100 mt-2" style="font-size:0.8rem; color: #ccc8d8;">
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-mouse me-2 gold"></i>Left drag</td>
+              <td>Rotate the camera</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-mouse me-2 gold"></i>Right drag</td>
+              <td>Pan the camera</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-search me-2 gold"></i>Scroll</td>
+              <td>Zoom in and out</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-play me-2 gold"></i>Animate</td>
+              <td>Spin the bottle</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-border-all me-2 gold"></i>Wireframe</td>
+              <td>Toggle wireframe view</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-volume-up me-2 gold"></i>Sound</td>
+              <td>Toggle ambient audio</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem 0;"><i class="fas fa-sliders-h me-2 gold"></i>GUI panel</td>
+              <td>Adjust the spot light</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-nav">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="copyright">
+            &copy; 2026 Attar Al-Arabia | H7006 Web 3D Applications | University of Sussex
+          </p>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="index.html"><i class="fas fa-home fa-lg me-3"></i></a>
+          <a href="about.html"><i class="fas fa-info-circle fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>

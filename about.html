@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--
+  Attar Al-Arabia - About Page
+  H7006 Web 3D Applications | University of Sussex 2026 | Candidate: 278908
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Attar Al-Arabia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-section p, .about-section li, .about-section td { color: #d8d4e0; font-size: 0.95rem; line-height: 1.8; }
+    .about-section h2 { color: #D4AF37; font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(212,175,55,0.2); }
+    .about-section strong { color: #f0ece4; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .checklist-item .check-icon { color: #D4AF37; margin-top: 0.25rem; flex-shrink: 0; }
+    .checklist-item span { color: #c8c4d0; font-size: 0.9rem; }
+    .checklist-item strong { display: block; margin-bottom: 0.1rem; }
+    .about-img { transition: transform 0.3s ease; cursor: pointer; border: 1px solid rgba(212,175,55,0.2); }
+    .about-img.zoomed { transform: scale(1.5); z-index: 100; position: relative; }
+    pre { color: #b8b4c0 !important; font-size: 0.8rem; background: #1c1c26; padding: 1rem; border: 1px solid rgba(212,175,55,0.2); }
+    .about-section a { color: #D4AF37; }
+    .about-section a:hover { color: #f0d060; }
+    .about-header p { color: #b8b4c0; }
+    /* Blender image placeholder box */
+    .blender-placeholder {
+      background: #1c1c26;
+      border: 1px solid rgba(212,175,55,0.35);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(212,175,55,0.4);
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .blender-placeholder .blender-screenshot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="mainNav" class="navbar sticky-top navbar-expand-sm">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="navbar-brand" href="index.html">
+          <h1>&#1593;&#1591;&#1585;</h1><h2>Al-Arabia</h2><p>The Art of Arabian Fragrance</p>
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="viewer.html">3D Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Fragrances</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="viewer.html?model=oud">Oud Noir</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=rose">Rose Royale</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=amber">Amber Essence</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="about-header">
+    <h1>About This Project</h1>
+    <p class="mt-2">H7006 Web 3D Applications &bull; University of Sussex 2026 &bull; Candidate 278908</p>
+  </header>
+
+  <div class="container about-section">
+    <div class="mt-4"></div>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+
+        <section>
+          <h2><i class="fas fa-flask me-2"></i>Project Overview</h2>
+          <p>
+            This project is a 3D fragrance gallery called <strong>Attar Al-Arabia</strong>, built as the final
+            assignment for H7006 Web 3D Applications at the University of Sussex. I wanted to pick a theme that
+            was original and something I was actually interested in, so I based it around Arabian perfumery.
+          </p>
+          <p>
+            The word "attar" comes from Arabic and means fragrance or essential oil. It is one of the oldest
+            perfumery traditions in the world and it felt like a strong concept to build a 3D gallery around.
+            The site presents three original perfume bottles that users can interact with in the browser using
+            Three.js and WebGL.
+          </p>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-code me-2"></i>Technology Used</h2>
+          <p>
+            The whole application runs in the browser using standard open source web technologies. No special
+            software is needed to view it.
+          </p>
+          <ul>
+            <li><strong>Three.js (r160)</strong> is the core library for all 3D rendering. It handles the scene, camera, lights, geometry and the animation loop, sitting on top of WebGL so I did not need to write raw WebGL code.</li>
+            <li><strong>GLTFLoader</strong> loads the 3D bottle models exported from Blender as GLB files, which is a compact binary format that packages textures and animations together.</li>
+            <li><strong>OrbitControls</strong> is a Three.js addon that handles the mouse controls for rotating, panning and zooming around the model.</li>
+            <li><strong>dat.GUI</strong> is a small library I used to build the interactive lighting panel on the right hand side of the viewer.</li>
+            <li><strong>Bootstrap 5</strong> provides the responsive grid layout and the navigation bar.</li>
+            <li><strong>Blender</strong> is the 3D modelling software I used to create the bottle shapes, set up materials and export to GLB format.</li>
+            <li><strong>HTML5 and CSS3</strong> for structure and styling. All custom CSS was written by hand.</li>
+            <li><strong>ES Modules with Import Maps</strong> is the modern way to import Three.js without needing a build tool like Webpack, which kept the setup much simpler.</li>
+          </ul>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-cube me-2"></i>3D Modelling Process</h2>
+          <p>
+            All three bottles were modelled in Blender. I wanted each bottle to have a shape that matched the
+            character of the fragrance, so I thought about the silhouette of each one before starting to model.
+          </p>
+          <ul>
+            <li><strong>Planning the shape.</strong> Oud Noir is tall and angular to feel bold and dark. Rose Royale is round and bulbous to feel soft. Amber Essence is faceted like a cut gem to feel warm and premium.</li>
+            <li><strong>Building the geometry.</strong> I used the Lathe modifier on a curve profile in Blender to get a smooth organic bottle body. The neck, stopper and cap are separate cylinder objects attached to the body.</li>
+            <li><strong>Setting up materials.</strong> All materials use the Principled BSDF shader. The glass bodies have some transmission to look slightly see-through. The gold caps use a high metalness value.</li>
+            <li><strong>Adding animation.</strong> Each bottle has a simple rotation keyframe animation so there is something to play when the Animate button is clicked in the app.</li>
+            <li><strong>Exporting.</strong> I exported each model using File, Export, glTF 2.0 and selected the GLB binary format with Animation enabled. Each file saved into the assets/models folder.</li>
+          </ul>
+
+          <div class="container text-center mt-3">
+            <div class="row g-2 justify-content-center">
+              <div class="col-6 col-md-4">
+                <div class="blender-placeholder">
+                  <i class="fas fa-cube"></i>
+                  <img src="assets/images/blender_oud.png" alt="Oud Noir in Blender"
+                       class="img-fluid about-img blender-screenshot"
+                       onerror="this.style.display='none'; this.previousElementSibling.style.display='block';">
+                </div>
+                <small class="d-block mt-1" style="color:#ccc8d8;">Oud Noir in Blender</small>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="blender-placeholder">
+                  <i class="fas fa-cube"></i>
+                  <img src="assets/images/blender_rose.png" alt="Rose Royale in Blender"
+                       class="img-fluid about-img blender-screenshot"
+                       onerror="this.style.display='none'; this.previousElementSibling.style.display='block';">
+                </div>
+                <small class="d-block mt-1" style="color:#ccc8d8;">Rose Royale in Blender</small>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="blender-placeholder">
+                  <i class="fas fa-cube"></i>
+                  <img src="assets/images/blender_amber.png" alt="Amber Essence in Blender"
+                       class="img-fluid about-img blender-screenshot"
+                       onerror="this.style.display='none'; this.previousElementSibling.style.display='block';">
+                </div>
+                <small class="d-block mt-1" style="color:#ccc8d8;">Amber Essence in Blender</small>
+              </div>
+            </div>
+            <small style="color:#ccc8d8;">Click any image to zoom.</small>
+          </div>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-video me-2"></i>Arabian Perfumery</h2>
+          <p>
+            The art of Arabian fragrance has been practised for over a thousand years.
+            Oud, rose and amber are central to the culture of perfumery across the Middle East.
+            The video below gives background on the tradition that inspired this project.
+          </p>
+          <div class="ratio ratio-16x9 mt-3" style="border: 1px solid rgba(212,175,55,0.2); max-width: 640px;">
+            <iframe
+              src="https://www.youtube.com/embed/8DL7LqVPlp0"
+              title="The History of Perfume"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-check-circle me-2"></i>Feature Checklist</h2>
+          <p>Everything in the assignment brief has been included in the final submission.</p>
+          <div class="mt-3">
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>At least three 3D models</strong>
+              <span>Three original perfume bottles: Oud Noir, Rose Royale and Amber Essence.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Original design, not the lab Coca-Cola brand</strong>
+              <span>The theme, models and all code were created from scratch for this submission.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>User interface</strong>
+              <span>A full Bootstrap 5 site with a home page, 3D gallery viewer and about page.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>CSS logo in the header</strong>
+              <span>The Al-Arabia logo in the navbar is made entirely with HTML and CSS with no image file.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Model selection gallery</strong>
+              <span>Three buttons switch between models and also update the description text below the canvas.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Wireframe mode (required by brief)</strong>
+              <span>The Wireframe button switches the current model into wireframe view and back again.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>onClick animation</strong>
+              <span>The Animate button triggers a 360 degree spin with a scale pulse effect on the model.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Lighting control with dat.GUI</strong>
+              <span>The GUI panel lets you change the spot light colour, intensity, distance, angle, penumbra and toggle a moving light animation.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>OrbitControls</strong>
+              <span>Drag to rotate, right-drag to pan, scroll to zoom. Damping is on for smoother movement.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Content swapping</strong>
+              <span>When you switch models the name, description and scent notes all update using JavaScript DOM manipulation.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Auto-rotate and reset</strong>
+              <span>The Rotate button toggles passive spin and the Reset button returns the camera to the starting position.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Responsive layout</strong>
+              <span>The Bootstrap grid and a window resize handler keep the layout and canvas working on different screen sizes.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>URL parameter model loading</strong>
+              <span>Linking to viewer.html?model=rose opens the page with Rose Royale already selected.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>About page</strong>
+              <span>This page covering the project overview, technology, modelling, testing, checklist and references.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>GitHub repository (going beyond, +5 marks)</strong>
+              <span>The full codebase including Blender source files is archived on GitHub.</span></div>
+            </div>
+
+            <div class="checklist-item">
+              <i class="fas fa-check-circle check-icon"></i>
+              <div><strong>Blender source files included</strong>
+              <span>All three .blend files are included in the submission as required by the brief.</span></div>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-vial me-2"></i>Testing</h2>
+          <p>Testing was done during Week 11 using three methods from the Lab 11 content.</p>
+          <ul>
+            <li><strong>Functional testing.</strong> I went through every button and feature one by one to check they all worked correctly. This included the model selectors, Animate, Wireframe, Rotate, Reset, the dat.GUI sliders and the dropdown navigation.</li>
+            <li><strong>Cross-browser testing.</strong> I tested in Chrome, Firefox and Safari to check the Three.js scene and ES module import maps worked in each browser.</li>
+            <li><strong>Responsive testing.</strong> I used Chrome DevTools device emulation to check the layout at mobile (375px) and tablet (768px) screen widths.</li>
+            <li><strong>Peer usability testing.</strong> During the Week 11 lab I asked another student to use the site without any instructions from me. They were able to load a model, toggle wireframe and adjust the lighting without needing any help.</li>
+            <li><strong>Console debugging.</strong> I kept Chrome DevTools open throughout development to catch errors early. The final build has no unhandled errors in the console.</li>
+          </ul>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-fingerprint me-2"></i>Statement of Originality</h2>
+          <p>
+            I designed and built this application myself. I did not use or adapt the Coca-Cola lab template.
+            All three 3D models were made by me in Blender. The HTML, CSS and JavaScript were written from scratch.
+          </p>
+          <p>The following open source libraries were used and are cited in the references:</p>
+          <ul>
+            <li>Three.js (MIT licence)</li>
+            <li>Bootstrap 5 (MIT licence)</li>
+            <li>dat.GUI (Apache 2.0 licence)</li>
+            <li>Font Awesome Free (CC BY 4.0)</li>
+            <li>Google Fonts: Cinzel and Open Sans (SIL Open Font Licence)</li>
+          </ul>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-sitemap me-2"></i>Site Map</h2>
+          <ul>
+            <li><a href="index.html">index.html</a> - Home page</li>
+            <li><a href="viewer.html">viewer.html</a> - Main 3D gallery viewer</li>
+            <li>viewer.html?model=oud - Opens with Oud Noir selected</li>
+            <li>viewer.html?model=rose - Opens with Rose Royale selected</li>
+            <li>viewer.html?model=amber - Opens with Amber Essence selected</li>
+            <li><a href="about.html">about.html</a> - This page</li>
+            <li><a href="submission.html">submission.html</a> - Submission details and GitHub link</li>
+            <li>script.js - All Three.js logic</li>
+            <li>style.css - Main stylesheet</li>
+            <li>style_button.css - Viewer and button styles</li>
+            <li>assets/models/ - GLB model files</li>
+            <li>assets/blender/ - Blender source files</li>
+            <li>assets/images/ - Blender screenshots</li>
+          </ul>
+        </section>
+
+        <div class="mt-4"></div>
+
+        <section>
+          <h2><i class="fas fa-book me-2"></i>References</h2>
+          <ul>
+            <li>Three.js (2024). Three.js Documentation. Available at: https://threejs.org/docs/</li>
+            <li>Three.js (2024). OrbitControls. Available at: https://threejs.org/docs/#examples/en/controls/OrbitControls</li>
+            <li>Sbcode (2024). Three.js and dat.GUI. Available at: https://sbcode.net/threejs/dat-gui-module/</li>
+            <li>Bootstrap (2024). Bootstrap 5 Documentation. Available at: https://getbootstrap.com/docs/5.3/</li>
+            <li>dat.GUI (2024). dat.GUI CDN. Available at: https://cdnjs.com/libraries/dat-gui</li>
+            <li>Creed, D. and Khan, I. (2026). H7006 Web 3D Applications Lab Handouts. University of Sussex.</li>
+          </ul>
+        </section>
+
+        <div class="mt-4"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-nav mt-4">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="copyright">&copy; 2026 Attar Al-Arabia | H7006 Web 3D Applications | University of Sussex</p>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="index.html"><i class="fas fa-home fa-lg me-3"></i></a>
+          <a href="submission.html"><i class="fas fa-file-code fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+    document.querySelectorAll('.about-img').forEach(img => {
+      img.addEventListener('click', function () { this.classList.toggle('zoomed'); });
+    });
+  </script>
+
+
+  <!-- Ambient audio - starts on first click, loops continuously -->
+  <script>
+    var audio = new Audio('assets/sounds/perfume.mp3');
+    audio.loop = true;
+    audio.volume = 0.4;
+    var started = false;
+    document.addEventListener('click', function() {
+      if (started) return;
+      started = true;
+      audio.play().catch(function() { started = false; });
+    });
+  </script>
+</body>
+</html>

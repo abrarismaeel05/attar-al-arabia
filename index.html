@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+  Attar Al-Arabia - Home Page (index.html)
+  H7006 Web 3D Applications
+  University of Sussex 2026
+  Candidate: 278908
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Attar Al-Arabia | 3D Fragrance Gallery</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar sticky-top navbar-expand-sm">
+    <div class="container-fluid">
+
+      <!-- CSS logo, no image used -->
+      <div class="logo">
+        <a class="navbar-brand" href="index.html">
+          <h1>&#1593;&#1591;&#1585;</h1>
+          <h2>Al-Arabia</h2>
+          <p>The Art of Arabian Fragrance</p>
+        </a>
+      </div>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navContent"
+              aria-controls="navContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="viewer.html">3D Gallery</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"
+               id="fragDrop" data-bs-toggle="dropdown" aria-expanded="false">
+              Fragrances
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="fragDrop">
+              <li><a class="dropdown-item" href="viewer.html?model=oud">Oud Noir</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=rose">Rose Royale</a></li>
+              <li><a class="dropdown-item" href="viewer.html?model=amber">Amber Essence</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero section -->
+  <section id="hero-section">
+    <div id="hero-text">
+      <h1>Discover the Art of</h1>
+      <h2>Arabian Fragrance</h2>
+      <p>
+        Three original Arabian perfume bottles, built in Blender and
+        displayed in real-time 3D using Three.js and WebGL.
+        Rotate, zoom and explore each one in the browser.
+      </p>
+      <a href="viewer.html" class="btn btn-gold me-3">Enter Gallery</a>
+      <a href="about.html" class="btn btn-gold-outline">About This Project</a>
+    </div>
+  </section>
+
+  <!-- Product cards -->
+  <section class="container my-5">
+
+    <div class="row text-center mb-4">
+      <div class="col">
+        <h2 class="section-title">The Collection</h2>
+        <p class="section-subtitle">Three original 3D models built in Blender and rendered in Three.js</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card product-card h-100">
+          <div class="card-img-container">
+            <img src="assets/images/blender_oud.png"
+                 alt="Oud Noir perfume bottle rendered in Blender"
+                 class="card-bottle-img">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title">Oud Noir</h3>
+            <p class="card-text flex-grow-1">
+              A dark, bold take on Arabian Oud. Deep woody notes
+              with black amber and smoky incense, one of the most
+              treasured scents in the Arab world.
+            </p>
+            <a href="viewer.html?model=oud" class="btn btn-gold-outline">View in 3D &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card product-card h-100">
+          <div class="card-img-container">
+            <img src="assets/images/blender_rose.png"
+                 alt="Rose Royale perfume bottle rendered in Blender"
+                 class="card-bottle-img">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title">Rose Royale</h3>
+            <p class="card-text flex-grow-1">
+              Based on the famous Damascus Rose from Syria.
+              Rose petals, saffron and musk combined in a round
+              jewel-shaped bottle.
+            </p>
+            <a href="viewer.html?model=rose" class="btn btn-gold-outline">View in 3D &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card product-card h-100">
+          <div class="card-img-container">
+            <img src="assets/images/blender_amber.png"
+                 alt="Amber Essence perfume bottle rendered in Blender"
+                 class="card-bottle-img">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title">Amber Essence</h3>
+            <p class="card-text flex-grow-1">
+              Warm amber resin with vanilla and sandalwood in a
+              faceted bottle inspired by the souks of Bahrain.
+              Rich and warm.
+            </p>
+            <a href="viewer.html?model=amber" class="btn btn-gold-outline">View in 3D &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Info section -->
+  <section class="info-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-md-6">
+          <h2>Built with Web 3D Technology</h2>
+          <p>
+            This project uses Three.js and WebGL to display 3D models
+            directly in the browser. Each bottle was modelled in Blender
+            and exported as a GLB file. You can rotate, zoom, animate
+            and toggle wireframe view on each model.
+          </p>
+          <a href="about.html" class="btn btn-gold-outline mt-3">Read More About the Project</a>
+        </div>
+
+        <div class="col-md-6 text-center">
+          <div class="tech-icons">
+            <span class="tech-badge">Three.js</span>
+            <span class="tech-badge">WebGL</span>
+            <span class="tech-badge">GLB / glTF</span>
+            <span class="tech-badge">Blender</span>
+            <span class="tech-badge">Bootstrap 5</span>
+            <span class="tech-badge">HTML5</span>
+            <span class="tech-badge">CSS3</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">dat.GUI</span>
+            <span class="tech-badge">OrbitControls</span>
+            <span class="tech-badge">Web Audio API</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-nav">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="copyright">
+            &copy; 2026 Attar Al-Arabia | H7006 Web 3D Applications | University of Sussex
+          </p>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github fa-lg me-3"></i>
+          </a>
+          <a href="submission.html" aria-label="Submission Details">
+            <i class="fas fa-file-code fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <!-- Ambient audio - starts on first click, loops continuously -->
+  <script>
+    var audio = new Audio('assets/sounds/perfume.mp3');
+    audio.loop = true;
+    audio.volume = 0.4;
+    var started = false;
+    document.addEventListener('click', function() {
+      if (started) return;
+      started = true;
+      audio.play().catch(function() { started = false; });
+    });
+  </script>
+
+</body>
+</html>
